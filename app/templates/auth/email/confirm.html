@@ -1,0 +1,6 @@
+<p>亲爱的 {{ user.username }},</p>
+<p>欢迎来到 <b>言之命至</b>!</p>
+<p>为了确认您的账户，请点击 <a href="{{ url_for('auth.confirm', token=token, _external=True) }}">这里</a>.</p>
+<p>或者您可以复制下面的链接粘贴到浏览器</p>
+<p>希望您在这里玩的开心</p>
+<p><small>注意：请不要回复此邮件</small></p>

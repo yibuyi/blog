@@ -1,0 +1,11 @@
+亲爱的 {{ user.name }}，
+
+欢迎来到Flasky！
+
+请点击下面的链接确认您的账户：
+
+{{ url_for('auth.confirm',token=token,_external=True) }}
+
+祝好，
+
+Flasky 团队

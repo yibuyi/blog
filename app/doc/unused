@@ -1,0 +1,48 @@
+
+生成头像
+models/user
+
+	avatar_hash = db.Column(db.String(32))
+
+	def gravatar(self, size=100, default='identicon', rating='g'):  # 生成Gravatar URL
+		if request.is_secure:
+			url = 'https://secure.gravatar.com/avatar'
+		else:
+			url = 'http://www.gravatar.com/avatar'
+		hash = self.avatar_hash or hashlib.md5(self.email.encode('utf-8')).hexdigest()
+		return '{url}/{hash}?s={size}&d={default}&r={rating}'.format(
+			url=url, hash=hash, size=size, default=default, rating=rating)
+
+
+	def __init__(self, **kwargs):  # 定义默认的用户角色
+
+		if self.email is not None and self.avatar_hash is None:
+		self.avatar_hash = hashlib.md5(self.email.encode('utf-8')).hexdigest()
+
+	def change_email(self, token):
+		self.email = new_email
+		self.avatar_hash = hashlib.md5(
+			self.email.encode('utf-8')).hexdigest()
+		db.session.add(self)
+
+_post.html
+		<div class="profile-thumbnail">
+			<a href="{{ url_for('.user',username=post.author.username) }}">
+				<img class="img-rounded profile-thumbnail" src="{{ post.author.gravatar(size=40) }}">
+			</a>
+		</div>
+
+base.html
+{% block styles %}
+	{{ super() }}
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cerulean/bootstrap.min.css">
+{% endblock %}
+
+models/user
+		#	@staticmethod  # 把用户设为自己的关注者
+		#	def add_self_follows():
+		#		for user in User.query.all():
+		#			if not user.is_following(user):
+		# 				user.follow(user)
+		#				db.session.add(user)
+		#				db.session.commit()
