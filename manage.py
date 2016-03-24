@@ -1,4 +1,5 @@
-#encoding=utf-8
+# !/usr/bin/env python
+#  encoding=utf-8
 import os
 from app.models import Comment, User, Role, Permission, Follow, Post
 from app import create_app, db
@@ -28,9 +29,6 @@ manager.add_command('db', MigrateCommand)
 
 
 # 启动单元测试的命令
-
-
-
 @manager.command
 def test():
 	"""Run the unit tests."""
