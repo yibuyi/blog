@@ -9,14 +9,11 @@ from flask_migrate import Migrate, MigrateCommand
 COV = None
 if os.environ.get('FLASKY_COVERAGE'):
 	import coverage
-
 	COV = coverage.coverage(branch=True, include='app/*')
 	COV.start()
-
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 manager = Manager(app)
 migrate = Migrate(app, db)
-
 
 # 回调函数，自动在shell导入特定对象
 def make_shell_context():
