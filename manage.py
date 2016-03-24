@@ -1,4 +1,8 @@
 import os
+from app.models import Comment, User, Role, Permission, Follow, Post
+from app import create_app, db
+from flask_script import Manager, Shell
+from flask_migrate import Migrate, MigrateCommand
 
 COV = None
 if os.environ.get('FLASKY_COVERAGE'):
@@ -6,11 +10,6 @@ if os.environ.get('FLASKY_COVERAGE'):
 
 	COV = coverage.coverage(branch=True, include='app/*')
 	COV.start()
-
-from app.models import Comment, User, Role, Permission, Follow, Post
-from app import create_app, db
-from flask_script import Manager, Shell
-from flask_migrate import Migrate, MigrateCommand
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 manager = Manager(app)
