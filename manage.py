@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# encoding=utf-8
 import os
 
 COV = None
@@ -74,6 +72,8 @@ def deploy():  # 部署命令
 
 	Role.insert_roles()
 	User.add_self_follows()
+
+
 '''
 # 自动在浏览器刷新
 @manager.command
@@ -83,7 +83,6 @@ def dev():
 	live_server.watch('**/*.*')
 	live_server.serve(open_url=True)'''
 
-
 if __name__ == '__main__':
 	manager.run()
-	#app.run()
+# app.run()
