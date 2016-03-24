@@ -74,16 +74,16 @@ def deploy():  # 部署命令
 
 	Role.insert_roles()
 	User.add_self_follows()
-
+'''
 # 自动在浏览器刷新
 @manager.command
 def dev():
 	from livereload import Server
 	live_server = Server(app.wsgi_app)
 	live_server.watch('**/*.*')
-	live_server.serve(open_url=True)
+	live_server.serve(open_url=True)'''
 
 
 if __name__ == '__main__':
-	#manager.run()
-	app.run()
+	manager.run()
+	#app.run()
