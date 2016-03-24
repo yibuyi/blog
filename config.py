@@ -1,5 +1,5 @@
-#!/usr/bin/python
-# -*- coding: ascii -*-
+#!/usr/local/bin/python
+# -*- coding: utf-8 -*-
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
