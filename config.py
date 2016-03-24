@@ -12,7 +12,7 @@ class Config:
 	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')  # 'li12qiang345@163.com'
 	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')  # 'abcde12345'
 	FLASKY_MAIL_SUBJECT_PREFIX = ['Flasky']
-	FLASKY_MAIL_SENDER = '言之命至 <li12qiang345@163.com>'
+	FLASKY_MAIL_SENDER = '<li12qiang345@163.com>'
 	FLASKY_ADMIN = 'li12qiang345@163.com'
 	SSL_DISABLE = False
 	SQLALCHEMY_COMMIT_ON_TEARDOWN = True
