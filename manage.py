@@ -65,13 +65,10 @@ def deploy():  # 部署命令
 	"""Run deployment tasks."""
 	import flask_migrate
 	from app.models import Role, User
-
 	flask_migrate.upgrade()  # 数据库升级
-
 	Role.insert_roles()
 	User.add_self_follows()
 
 
 if __name__ == '__main__':
 	manager.run()
-
