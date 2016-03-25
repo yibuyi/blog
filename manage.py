@@ -1,4 +1,4 @@
-# coding=utf-8
+# encoding=utf-8
 import os
 from app.models import Comment, User, Role, Permission, Follow, Post
 from app import create_app, db
