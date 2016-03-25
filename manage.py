@@ -15,11 +15,9 @@ app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 manager = Manager(app)
 migrate = Migrate(app, db)
 
-# 回调函数，自动在shell导入特定对象
-def make_shell_context():
-	return dict(app=app, db=db, User=User, Role=Role,
-				Follow=Follow, Permission=Permission, Post=Post, Comment=Comment)
 
+def make_shell_context():
+	return dict(app=app, db=db, User=User, Role=Role, Follow=Follow, Permission=Permission, Post=Post, Comment=Comment)
 
 manager.add_command('shell', Shell(make_context=make_shell_context))
 manager.add_command('db', MigrateCommand)
