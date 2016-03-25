@@ -1,4 +1,4 @@
-# -*- coding: UTF-8 -*-
+# coding=utf-8
 import os
 from app.models import Comment, User, Role, Permission, Follow, Post
 from app import create_app, db
@@ -8,6 +8,7 @@ from flask_migrate import Migrate, MigrateCommand
 COV = None
 if os.environ.get('FLASKY_COVERAGE'):
 	import coverage
+
 	COV = coverage.coverage(branch=True, include='app/*')
 	COV.start()
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
@@ -17,6 +18,7 @@ migrate = Migrate(app, db)
 
 def make_shell_context():
 	return dict(app=app, db=db, User=User, Role=Role, Follow=Follow, Permission=Permission, Post=Post, Comment=Comment)
+
 
 manager.add_command('shell', Shell(make_context=make_shell_context))
 manager.add_command('db', MigrateCommand)
