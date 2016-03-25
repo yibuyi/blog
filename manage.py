@@ -24,7 +24,6 @@ manager.add_command('shell', Shell(make_context=make_shell_context))
 manager.add_command('db', MigrateCommand)
 
 
-# 启动单元测试的命令
 @manager.command
 def test():
 	"""Run the unit tests."""
@@ -56,11 +55,11 @@ def profile(length=25, profile_dir=None):
 
 
 @manager.command
-def deploy():  # 部署命令
+def deploy():
 	"""Run deployment tasks."""
 	import flask_migrate
 	from app.models import Role, User
-	flask_migrate.upgrade()  # 数据库升级
+	flask_migrate.upgrade()
 	Role.insert_roles()
 	User.add_self_follows()
 
