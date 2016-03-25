@@ -1,7 +1,7 @@
 # encoding=utf-8
 import os
-from app.models import Comment, User, Role, Permission, Follow, Post
 from app import create_app, db
+from app.models import User, Role, Permission, Post, Follow, Comment
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 
@@ -11,7 +11,7 @@ migrate = Migrate(app, db)
 
 
 def make_shell_context():
-	return dict(app=app, db=db, User=User, Role=Role, Follow=Follow, Permission=Permission, Post=Post, Comment=Comment)
+	return dict(app=app, db=db, User=User, Role=Role, Permission=Permission, Post=Post, Follow=Follow, Comment=Comment)
 
 
 manager.add_command('shell', Shell(make_context=make_shell_context))
@@ -27,13 +27,15 @@ def test():
 
 
 @manager.command
-def deploy():
+def deploy():  # 部署命令
 	"""Run deployment tasks."""
 	import flask_migrate
 	from app.models import Role, User
-	flask_migrate.upgrade()
-	Role.insert_roles()
-	User.add_self_follows()
+	flask_migrate.upgrade()  # 数据库升级
+
+
+# Role.insert_roles()
+# User.add_self_follows()
 
 
 if __name__ == '__main__':
