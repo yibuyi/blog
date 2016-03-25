@@ -1,5 +1,4 @@
-# !/usr/bin/env python
-#  encoding=utf-8
+# -*- coding: UTF-8 -*-
 import os
 from app.models import Comment, User, Role, Permission, Follow, Post
 from app import create_app, db
@@ -50,8 +49,7 @@ def test():
 def profile(length=25, profile_dir=None):
 	"""Start the application under the code profiler."""
 	from werkzeug.contrib.profiler import ProfilerMiddleware
-	app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[length],
-									  profile_dir=profile_dir)
+	app.wsgi_app = ProfilerMiddleware(app.wsgi_app, restrictions=[length], profile_dir=profile_dir)
 	app.run()
 
 
