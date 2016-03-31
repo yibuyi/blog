@@ -1,3 +1,4 @@
+# coding=utf-8
 from app.models import User, Role
 from flask_pagedown.fields import PageDownField
 from flask_wtf import Form

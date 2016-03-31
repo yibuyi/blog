@@ -1,3 +1,4 @@
+# coding=utf-8
 from app.models import Comment
 from flask_login import login_required, current_user
 from flask_sqlalchemy import get_debug_queries
